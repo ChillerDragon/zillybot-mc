@@ -18,8 +18,27 @@ const bot = mineflayer.createBot({
 
 bot.on('chat', (username, message) => {
   logger.log('chat', `${username}: ${message}`)
-  // if (username === bot.username) return
-  // bot.chat(message)
+  if (username === bot.username) return
+  if (message === 'chat test') bot.chat('cat test UwU')
+  if (message[0] !== '!') return
+
+  const cmd = message.slice(1)
+  if (cmd.startsWith('help') || cmd.startsWith('info')) {
+    bot.chat('I am a bot. My code is here: https://github.com/ChillerDragon/zillybot-mc')
+  }
+})
+
+bot.on('whisper', (username, message) => {
+  logger.log('whisper', `${username}: ${message}`)
+  bot.chat('I am a bot. My code is here: https://github.com/ChillerDragon/zillybot-mc')
+})
+
+bot.on('playerJoined', (player) => {
+  logger.log('server', `${player.username} joined the game`)
+})
+
+bot.on('playerLeft', (player) => {
+  logger.log('server', `${player.username} left the game`)
 })
 
 // Log errors and kick reasons:
@@ -27,8 +46,11 @@ bot.on('kicked', logger.log)
 bot.on('error', logger.log)
 
 bot.once('spawn', () => {
-  logger.log('bot', 'spawned')
   helper.printPlayerList(bot)
+})
+
+bot.once('connect', () => {
+  logger.log('bot', 'connected to server.')
 })
 
 logger.log('bot', `connecting to ${process.env.SERVER_IP} ...`)
