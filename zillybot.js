@@ -17,7 +17,7 @@ const bot = mineflayer.createBot({
 })
 
 bot.on('chat', (username, message) => {
-  logger.log('chat', `${username}: ${message}`)
+  logger.log('chat', `<${username}> ${message}`)
   if (username === bot.username) return
   if (message === 'chat test') bot.chat('cat test UwU')
   if (message[0] !== '!') return
@@ -33,13 +33,23 @@ bot.on('whisper', (username, message) => {
   bot.chat('I am a bot. My code is here: https://github.com/ChillerDragon/zillybot-mc')
 })
 
-bot.on('playerJoined', (player) => {
-  logger.log('server', `${player.username} joined the game`)
+// bot.on('message', (message) => {
+//   console.log(message)
+// })
+
+bot.on('messagestr', (messagestr, _position, message) => {
+  if (message.translate === 'chat.type.text') return
+
+  logger.log('message', messagestr)
 })
 
-bot.on('playerLeft', (player) => {
-  logger.log('server', `${player.username} left the game`)
-})
+// bot.on('playerJoined', (player) => {
+//   logger.log('server', `${player.username} joined the game`)
+// })
+
+// bot.on('playerLeft', (player) => {
+//   logger.log('server', `${player.username} left the game`)
+// })
 
 // Log errors and kick reasons:
 bot.on('kicked', logger.log)
