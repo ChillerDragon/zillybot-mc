@@ -3,6 +3,7 @@
 const mineflayer = require('mineflayer')
 
 const helper = require('./src/helpers')
+const logger = require('./src/logger')
 
 require('dotenv').config()
 
@@ -16,20 +17,18 @@ const bot = mineflayer.createBot({
 })
 
 bot.on('chat', (username, message) => {
-  console.log(`${username}: ${message}`)
-  if (username === bot.username) return
-  bot.chat(message)
+  logger.log('chat', `${username}: ${message}`)
+  // if (username === bot.username) return
+  // bot.chat(message)
 })
 
 // Log errors and kick reasons:
-bot.on('kicked', console.log)
-bot.on('error', console.log)
+bot.on('kicked', logger.log)
+bot.on('error', logger.log)
 
 bot.once('spawn', () => {
-  console.log('spawned')
-  bot.chat('chat test')
-  console.log(bot.players)
+  logger.log('bot', 'spawned')
   helper.printPlayerList(bot)
 })
 
-console.log(`connecting to ${process.env.SERVER_IP} ...`)
+logger.log('bot', `connecting to ${process.env.SERVER_IP} ...`)
