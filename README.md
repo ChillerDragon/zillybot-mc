@@ -27,6 +27,7 @@ Building a headless client that can be used as interactive terminal client and a
 
 ### bot client
 
+- [ ] stay on server (auto reconnect, anti afk)
 - [x] log everything to a file
     + [ ] parse the logfile or use a database to get stats
 - [ ] chat commands about stats
