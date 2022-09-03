@@ -1,11 +1,25 @@
 #!/usr/bin/env node
 
+const prompt = require('prompt')
 const mineflayer = require('mineflayer')
 
 const helper = require('./src/helpers')
 const logger = require('./src/logger')
 
 require('dotenv').config()
+
+prompt.start()
+
+const getChatInput = () => {
+  prompt.get(['chat'], (err, result) => {
+    if (err) {
+      logger.logAndThrow(err)
+    }
+
+    bot.chat(result.chat)
+    getChatInput()
+  })
+}
 
 const bot = mineflayer.createBot({
   host: process.env.SERVER_IP,
@@ -64,3 +78,5 @@ bot.once('connect', () => {
 })
 
 logger.log('bot', `connecting to ${process.env.SERVER_IP} ...`)
+
+getChatInput()
