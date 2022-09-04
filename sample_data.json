@@ -1,0 +1,20 @@
+{
+    "readme": "move this file to ./data/data.json",
+    "validIps": [
+        {
+            "note": "local ips",
+            "ips": [
+                "127.0.0.1",
+                "0.0.0.0:2500"
+            ]
+        }
+    ],
+    "honeypots": [
+        {
+            "note": "hosted by google",
+            "ips": [
+                "8.8.8.8"
+            ]
+        }
+    ]
+}
