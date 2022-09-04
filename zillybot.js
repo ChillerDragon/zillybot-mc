@@ -51,8 +51,8 @@ const ipHashMatch = (ip, hash) => {
   if (md5Base64 === hash) return true
   if (md5Hex === hash) return true
 
-  if (!ip.endsWith("\n")) {
-    if (ipHashMatch(ip + "\n", hash)) {
+  if (!ip.endsWith('\n')) {
+    if (ipHashMatch(ip + '\n', hash)) {
       return true
     }
   }
@@ -103,7 +103,7 @@ bot.on('chat', (username, message) => {
     bot.chat('what e4t_ said.')
   } else if (cmd === 'checkhash' || cmd === 'hashcheck' || cmd === 'iphash' || cmd === 'honeyhash') {
     if (args.length !== 1) {
-      bot.chat(`usage: !checkhash <sha1 hashed server ip>`)
+      bot.chat('usage: !checkhash <sha1 hashed server ip>')
       return
     }
     if (!isValidHash(args[0])) {
@@ -119,7 +119,7 @@ bot.on('chat', (username, message) => {
       data.validIps.forEach((valid) => {
         valid.ips.forEach((validIp) => {
           if (ipHashMatch(validIp, args[0])) {
-            message = `${username}: this is a known legit ip (${honeypot.note})`
+            message = `${username}: this is a known legit ip (${valid.note})`
           }
         })
       })
