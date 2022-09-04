@@ -27,7 +27,10 @@ Building a headless client that can be used as interactive terminal client and a
 
 - [x] chatting
 - [ ] basic controls
-    + [ ] drop items
+    + [ ] notify user about danger
+        * [ ] alert/disconnect on damage
+        * [ ] alert/disconnect on creeper nearby
+        * [ ] alert/disconnect on player nearby
     + [ ] walk around a bit
 
 ### bot client
@@ -40,6 +43,8 @@ Building a headless client that can be used as interactive terminal client and a
     + [ ] !firstseen
     + [ ] !deaths
     + [ ] !kills
+    + [x] !seed
+    + [x] !checkhash
 - [ ] bridge minecraft chat to irc
 
 ## features
