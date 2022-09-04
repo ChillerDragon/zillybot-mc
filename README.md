@@ -13,6 +13,11 @@ Nothing to see here. The cool library that makes it all happen is https://github
     npm install
     node zillybot.js
 
+### private data (ignore this, its just for me)
+
+    git clone git@github.com:ChillerDragon/zillybot-mc-data.git data
+    cd data
+    ./setup.sh
 
 ## goals of the project
 
