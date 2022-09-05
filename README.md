@@ -35,6 +35,10 @@ Building a headless client that can be used as interactive terminal client and a
 ### bot client
 
 - [x] stay on server (auto reconnect)
+- [ ] stay alive
+    + [ ] auto eat
+    + [ ] kill aura
+    + [ ] no fall damage hack
 - [x] log everything to a file
     + [ ] parse the logfile or use a database to get stats
 - [ ] chat commands about stats
