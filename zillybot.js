@@ -41,8 +41,8 @@ const connect = (chatPrompt) => {
     host: process.env.SERVER_IP,
     username: process.env.MC_USERNAME,
     password: process.env.MC_PASSWORD,
-    // port: 25565,
-    // version: false,
+    port: process.env.SERVER_PORT,
+    version: '1.18.2',
     auth: 'microsoft'
   })
 

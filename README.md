@@ -1,10 +1,14 @@
 # zillybot-mc
 
-yet another crappy headless minecraft bot
+This is me being biggest @LiveOverflow simp and following his [yt series](https://www.youtube.com/watch?v=Ekcseve-mOg&list=PLhixgUqwRTjwvBI-hmbZ2rpkAl4lutnJG)
 
-Nothing to see here. The cool library that makes it all happen is https://github.com/PrismarineJS/mineflayer
+This repository contains a minecraft client made especially for LiveOverflow's server.
+And also a proxy for debugging.
 
+So unless you are playing on the LO server check out the libraries I use directly and not my weird crap on top of it.
 
+ - [quarry](https://github.com/barneygale/quarry) python library I used to build the proxy
+ - [mineflayer](https://github.com/PrismarineJS/mineflayer) nodejs library I used to build the client
 
 ## getting started
 
