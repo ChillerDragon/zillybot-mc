@@ -1,6 +1,6 @@
 # zillybot-mc
 
-This is me being biggest @LiveOverflow simp and following his [yt series](https://www.youtube.com/watch?v=Ekcseve-mOg&list=PLhixgUqwRTjwvBI-hmbZ2rpkAl4lutnJG)
+This is me being biggest **[@LiveOverflow](https://github.com/LiveOverflow)** simp and following his [yt series](https://www.youtube.com/watch?v=Ekcseve-mOg&list=PLhixgUqwRTjwvBI-hmbZ2rpkAl4lutnJG)
 
 This repository contains a minecraft client made especially for LiveOverflow's server.
 And also a proxy for debugging.
