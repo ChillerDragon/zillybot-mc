@@ -18,6 +18,9 @@ const initIrc = (bot) => {
   bot.irc = new irc.Client(process.env.IRC_SERVER, 'bridge', {
     channels: [`#${process.env.IRC_CHANNEL}`]
   })
+  bot.irc.addListener('error', function(message) {
+    logger.log('irc', `Erorr: ${message.command}: ${message.args.join(' ')}`)
+  })
   bot.irc.addListener(`message#${process.env.IRC_CHANNEL}`, (from, message) => {
     // logger.log(`irc][${connectionName()}`, `${from}: ${message}`)
     bot.chat(`[${connectionName()}]${from}: ${message}`)
