@@ -1,10 +1,12 @@
 const logger = require('./logger')
 const helpers = require('./helpers')
 const chatCommands = require('./chat_commands')
+const ircBridge = require('./irc_bridge')
 
 const initHooks = (bot) => {
   bot.on('chat', (username, message) => {
     logger.log('chat', `<${username}> ${message}`)
+    ircBridge.onMessage(bot, username, message)
     if (username === bot.username) return
     if (message === 'chat test') bot.chat('uwu test')
 

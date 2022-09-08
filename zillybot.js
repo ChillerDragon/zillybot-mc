@@ -3,6 +3,7 @@
 const prompt = require('prompt')
 const mineflayer = require('mineflayer')
 
+const ircBridge = require('./src/irc_bridge')
 const logger = require('./src/logger')
 const { initHooks } = require('./src/hooks')
 
@@ -46,7 +47,8 @@ const connect = (chatPrompt) => {
     auth: 'microsoft'
   })
 
-  logger.log('bot', `connecting to ${process.env.SERVER_IP} ...`)
+  logger.log('bot', `connecting to minecraft server ${process.env.SERVER_IP} ...`)
+  ircBridge.initIrc(bot)
 
   initHooks(bot)
   // bot.once('disconnect', () => reconnect(chatPrompt))

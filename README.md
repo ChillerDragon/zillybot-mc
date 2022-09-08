@@ -53,7 +53,7 @@ Building a headless client that can be used as interactive terminal client and a
     + [x] !seed
     + [x] !checkhash
     + [ ] !mail
-- [ ] bridge minecraft chat to irc
+- [x] bridge minecraft chat to irc
 
 ## features
 
