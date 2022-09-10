@@ -40,22 +40,22 @@ Building a headless client that can be used as interactive terminal client and a
 ### bot client
 
 - [x] stay on server (auto reconnect)
+- [x] bridge minecraft chat to irc
+- [x] log everything to a file
+    + [ ] parse the logfile or use a database to get stats
+- [ ] chat commands
+    + [x] !seed
+    + [x] !checkhash [sha1 of server ip]
+    + [ ] !lastseen [name]
+    + [ ] !firstseen [name]
+    + [ ] !deaths [name]
+    + [ ] !kills [name]
+    + [ ] !mail [username] [text]
+    + [ ] !sleep
 - [ ] stay alive
     + [ ] auto eat
     + [ ] kill aura
     + [ ] no fall damage hack
-- [x] log everything to a file
-    + [ ] parse the logfile or use a database to get stats
-- [ ] chat commands about stats
-    + [ ] !lastseen
-    + [ ] !firstseen
-    + [ ] !deaths
-    + [ ] !kills
-    + [x] !seed
-    + [x] !checkhash
-    + [ ] !mail
-    + [ ] !sleep
-- [x] bridge minecraft chat to irc
 
 ## features
 
