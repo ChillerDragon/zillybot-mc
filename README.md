@@ -30,6 +30,7 @@ Building a headless client that can be used as interactive terminal client and a
 ### interactive client
 
 - [x] chatting
+- [ ] show playerlist
 - [ ] show inventory
 - [ ] notify user about danger
     + [ ] alert/disconnect on damage
@@ -53,6 +54,7 @@ Building a headless client that can be used as interactive terminal client and a
     + [x] !seed
     + [x] !checkhash
     + [ ] !mail
+    + [ ] !sleep
 - [x] bridge minecraft chat to irc
 
 ## features
