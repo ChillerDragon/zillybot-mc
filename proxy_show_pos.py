@@ -7,7 +7,7 @@ based on https://github.com/barneygale/quarry/blob/9a6872013294ecb4fba18a57c9917
 and inspired by https://www.youtube.com/watch?v=Ekcseve-mOg
 
 This proxy does not really belong to the zillybot.js client.
-But its also not worth its own repository. So seems like I start collecting all the LiveOverflow simp things in this repo now.
+But its also not worth its own repository. So seems like I start collecting all the LiveOverflow smp things in this repo now.
 """
 
 from twisted.internet import reactor
