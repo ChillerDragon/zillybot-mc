@@ -10,6 +10,10 @@ So unless you are playing on the LO server check out the libraries I use directl
  - [quarry](https://github.com/barneygale/quarry) python library I used to build the proxy
  - [mineflayer](https://github.com/PrismarineJS/mineflayer) nodejs library I used to build the client
 
+## related projects
+
+- [GreenScripter/sign-restorer](https://github.com/GreenScripter/sign-restorer) project that keeps track of signs on the LiveOverflow server
+
 ## getting started
 
     cp env.example .env
