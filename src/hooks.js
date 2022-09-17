@@ -15,7 +15,7 @@ const initHooks = (bot) => {
 
   bot.on('whisper', (username, message) => {
     logger.log('whisper', `${username}: ${message}`)
-    bot.chat('I am a bot. My code is here: https://github.com/ChillerDragon/zillybot-mc')
+    bot.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   })
 
   // bot.on('message', (message) => {

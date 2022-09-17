@@ -62,9 +62,9 @@ const onMessage = (bot, username, message) => {
   const args = input.length > 1 ? input.slice(1) : []
   logger.log('command', `'${username}' used command '${cmd}' with args: ${args}`)
   if (cmd.startsWith('help') || cmd.startsWith('info') || cmd.startsWith('about')) {
-    bot.chat('I am a bot. My code is here: https://github.com/ChillerDragon/zillybot-mc')
+    bot.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   } else if (cmd.startsWith('bot')) { // !bot, !bots, !botter, !bothelp, !botinfo
-    bot.chat('[iambot] My code is here: https://github.com/ChillerDragon/zillybot-mc')
+    bot.chat('[iambot] My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   } else if (cmd === 'seed') {
     bot.chat(`the seed is: ${process.env.SEED}`)
   } else if (cmd === 'tps') {
