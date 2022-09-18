@@ -7,6 +7,8 @@ const ircBridge = require('./src/irc_bridge')
 const logger = require('./src/logger')
 const { initMcHooks } = require('./src/hooks')
 
+const { ComSeed } = require('./src/commands/seed')
+
 require('dotenv').config()
 
 prompt.start()
@@ -15,6 +17,8 @@ class ZillyBot {
   constructor () {
     this.mc = null
     this.irc = null
+    this.commands = []
+    this.commands.push(new ComSeed(this))
   }
 
   getInput () {

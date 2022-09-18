@@ -54,7 +54,7 @@ const isValidHash = (hash) => {
   return false
 }
 
-const onMessage = (mcBot, username, message) => {
+const onMessage = (zillyBot, username, message) => {
   if (message[0] !== '!') return
 
   const input = message.slice(1).split(' ')
@@ -62,20 +62,18 @@ const onMessage = (mcBot, username, message) => {
   const args = input.length > 1 ? input.slice(1) : []
   logger.log('command', `'${username}' used command '${cmd}' with args: ${args}`)
   if (cmd.startsWith('help') || cmd.startsWith('info') || cmd.startsWith('about')) {
-    mcBot.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
+    zillyBot.mc.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   } else if (cmd.startsWith('bot')) { // !bot, !bots, !botter, !bothelp, !botinfo
-    mcBot.chat('[iambot] My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
-  } else if (cmd === 'seed') {
-    mcBot.chat(`the seed is: ${process.env.SEED}`)
+    zillyBot.mc.chat('[iambot] My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   } else if (cmd === 'tps') {
-    mcBot.chat('what e4t_ said.')
+    zillyBot.mc.chat('what e4t_ said.')
   } else if (cmd === 'checkhash' || cmd === 'hashcheck' || cmd === 'iphash' || cmd === 'honeyhash') {
     if (args.length !== 1) {
-      mcBot.chat('usage: !checkhash <sha1 hashed server ip>')
+      zillyBot.mc.chat('usage: !checkhash <sha1 hashed server ip>')
       return
     }
     if (!isValidHash(args[0])) {
-      mcBot.chat(`${username}: Error: invalid hash. Supported hashes are md5, sha1 and sha256.`)
+      zillyBot.mc.chat(`${username}: Error: invalid hash. Supported hashes are md5, sha1 and sha256.`)
       return
     }
     fs.readFile('./data/data.json', (err, dataText) => {
@@ -98,7 +96,13 @@ const onMessage = (mcBot, username, message) => {
           }
         })
       })
-      mcBot.chat(message)
+      zillyBot.mc.chat(message)
+    })
+  } else {
+    zillyBot.commands.forEach((com) => {
+      if (com.names.includes(cmd)) {
+        com.run(username, false, args)
+      }
     })
   }
 }
