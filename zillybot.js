@@ -8,6 +8,7 @@ const logger = require('./src/logger')
 const { initMcHooks } = require('./src/hooks')
 
 const { ComSeed } = require('./src/commands/seed')
+const { ComVerifyHash } = require('./src/commands/verify_hash')
 
 require('dotenv').config()
 
@@ -19,6 +20,7 @@ class ZillyBot {
     this.irc = null
     this.commands = []
     this.commands.push(new ComSeed(this))
+    this.commands.push(new ComVerifyHash(this))
   }
 
   getInput () {
