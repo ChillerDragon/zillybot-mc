@@ -2,7 +2,14 @@ class Command {
   constructor(zillyBot) {
     this.names = []
     this.zillyBot = zillyBot
-    this.mc = zillyBot.mc
+  }
+
+  mc() {
+    return this.zillyBot.mc
+  }
+
+  chat(message) {
+    this.mc().chat(message)
   }
 
   run(username, whisper, args) {

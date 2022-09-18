@@ -6,7 +6,7 @@ class ComSeed extends Command {
     this.names = ['seed']
   }
   run(username, whisper, args) {
-    this.mc.chat(`the seed is: ${process.env.SEED}`)
+    this.chat(`the seed is: ${process.env.SEED}`)
   }
 }
 
