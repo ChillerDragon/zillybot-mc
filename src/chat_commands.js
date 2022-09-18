@@ -17,7 +17,7 @@ const onMessage = (zillyBot, username, message) => {
 
     zillyBot.commands.forEach((com) => {
       if (com.names.includes(helpCmd)) {
-        com.help(helpPage)
+        com.help(helpPage - 1)
       }
     })
   } else if (cmd.startsWith('help') || cmd.startsWith('info') || cmd.startsWith('about')) {

@@ -7,12 +7,12 @@ class Command {
 
   help (page) {
     if (page < 0) page = 0
-    if (page > this.helpPages.length) page = this.helpPages.length
+    if (page >= this.helpPages.length) page = this.helpPages.length - 1
     if (this.helpPages.length === 0) return
 
     let helpText = this.helpPages[page]
     if (this.helpPages.length > 1) {
-      helpText += ` [page ${page}/${this.helpPages.length}]`
+      helpText += ` [page ${page + 1}/${this.helpPages.length}]`
     }
     this.chat(helpText)
   }
