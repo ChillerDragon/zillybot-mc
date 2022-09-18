@@ -3,48 +3,48 @@ const helpers = require('./helpers')
 const chatCommands = require('./chat_commands')
 const ircBridge = require('./irc_bridge')
 
-const initHooks = (bot) => {
-  bot.on('chat', (username, message) => {
+const initMcHooks = (zillyBot) => {
+  zillyBot.mc.on('chat', (username, message) => {
     logger.log('chat', `<${username}> ${message}`)
-    ircBridge.onMessage(bot, username, message)
-    if (username === bot.username) return
-    if (message === 'chat test') bot.chat('uwu test')
+    ircBridge.onMessage(zillyBot, username, message)
+    if (username === zillyBot.mc.username) return
+    if (message === 'chat test') zillyBot.mc.chat('uwu test')
 
-    chatCommands.onMessage(bot, username, message)
+    chatCommands.onMessage(zillyBot, username, message)
   })
 
-  bot.on('whisper', (username, message) => {
+  zillyBot.mc.on('whisper', (username, message) => {
     logger.log('whisper', `${username}: ${message}`)
-    bot.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
+    zillyBot.mc.chat('I am a zillyBot.mc. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   })
 
-  // bot.on('message', (message) => {
+  // zillyBot.mc.on('message', (message) => {
   //   console.log(message)
   // })
 
-  bot.on('messagestr', (messagestr, _position, message) => {
+  zillyBot.mc.on('messagestr', (messagestr, _position, message) => {
     if (message.translate === 'chat.type.text') return
 
     logger.log('message', messagestr)
   })
 
-  // bot.on('playerJoined', (player) => {
+  // zillyBot.mc.on('playerJoined', (player) => {
   //   logger.log('server', `${player.username} joined the game`)
   // })
 
-  // bot.on('playerLeft', (player) => {
+  // zillyBot.mc.on('playerLeft', (player) => {
   //   logger.log('server', `${player.username} left the game`)
   // })
 
-  bot.once('spawn', () => {
-    helpers.printPlayerList(bot)
+  zillyBot.mc.once('spawn', () => {
+    helpers.printPlayerList(zillyBot)
   })
 
-  bot.once('connect', () => {
+  zillyBot.mc.once('connect', () => {
     logger.log('bot', 'connected to server.')
   })
 }
 
 module.exports = {
-  initHooks
+  initMcHooks
 }

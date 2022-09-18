@@ -5,15 +5,16 @@ const mineflayer = require('mineflayer')
 
 const ircBridge = require('./src/irc_bridge')
 const logger = require('./src/logger')
-const { initHooks } = require('./src/hooks')
+const { initMcHooks } = require('./src/hooks')
 
 require('dotenv').config()
 
 prompt.start()
 
-class ChatPrompt {
-  setBot (bot) {
-    this.bot = bot
+class ZillyBot {
+  constructor () {
+    this.mc = null
+    this.irc = null
   }
 
   getInput () {
@@ -22,23 +23,23 @@ class ChatPrompt {
         logger.logAndThrow(err)
       }
 
-      this.bot.chat(result.chat)
+      this.mc.chat(result.chat)
       this.getInput()
     })
   }
 }
 
-const reconnect = (msg, chatPrompt) => {
+const reconnect = (msg, zillyBot) => {
   const delay = 10
   logger.log('bot', `Got disconnect: ${msg}`)
   logger.log('bot', `reconnecting in ${delay} seconds ...`)
   setTimeout(() => {
-    connect(chatPrompt)
+    connect(zillyBot)
   }, 1000 * delay)
 }
 
-const connect = (chatPrompt) => {
-  const bot = mineflayer.createBot({
+const connect = (zillyBot) => {
+  zillyBot.mc = mineflayer.createBot({
     host: process.env.SERVER_IP,
     username: process.env.MC_USERNAME,
     password: process.env.MC_PASSWORD,
@@ -48,16 +49,14 @@ const connect = (chatPrompt) => {
   })
 
   logger.log('bot', `connecting to minecraft server ${process.env.SERVER_IP} ...`)
-  ircBridge.initIrc(bot)
+  ircBridge.initIrc(zillyBot)
 
-  initHooks(bot)
-  // bot.once('disconnect', () => reconnect(chatPrompt))
-  bot.on('kicked', (reason) => reconnect(reason, chatPrompt))
-  bot.on('error', (reason) => reconnect(reason, chatPrompt))
-
-  chatPrompt.setBot(bot)
+  initMcHooks(zillyBot)
+  // zillyBot.mc.once('disconnect', () => reconnect(zillyBot))
+  zillyBot.mc.on('kicked', (reason) => reconnect(reason, zillyBot))
+  zillyBot.mc.on('error', (reason) => reconnect(reason, zillyBot))
 }
 
-const chatPrompt = new ChatPrompt()
-connect(chatPrompt)
-chatPrompt.getInput()
+const zillyBot = new ZillyBot()
+connect(zillyBot)
+zillyBot.getInput()

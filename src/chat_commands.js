@@ -54,7 +54,7 @@ const isValidHash = (hash) => {
   return false
 }
 
-const onMessage = (bot, username, message) => {
+const onMessage = (mcBot, username, message) => {
   if (message[0] !== '!') return
 
   const input = message.slice(1).split(' ')
@@ -62,20 +62,20 @@ const onMessage = (bot, username, message) => {
   const args = input.length > 1 ? input.slice(1) : []
   logger.log('command', `'${username}' used command '${cmd}' with args: ${args}`)
   if (cmd.startsWith('help') || cmd.startsWith('info') || cmd.startsWith('about')) {
-    bot.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
+    mcBot.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   } else if (cmd.startsWith('bot')) { // !bot, !bots, !botter, !bothelp, !botinfo
-    bot.chat('[iambot] My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
+    mcBot.chat('[iambot] My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
   } else if (cmd === 'seed') {
-    bot.chat(`the seed is: ${process.env.SEED}`)
+    mcBot.chat(`the seed is: ${process.env.SEED}`)
   } else if (cmd === 'tps') {
-    bot.chat('what e4t_ said.')
+    mcBot.chat('what e4t_ said.')
   } else if (cmd === 'checkhash' || cmd === 'hashcheck' || cmd === 'iphash' || cmd === 'honeyhash') {
     if (args.length !== 1) {
-      bot.chat('usage: !checkhash <sha1 hashed server ip>')
+      mcBot.chat('usage: !checkhash <sha1 hashed server ip>')
       return
     }
     if (!isValidHash(args[0])) {
-      bot.chat(`${username}: Error: invalid hash. Supported hashes are md5, sha1 and sha256.`)
+      mcBot.chat(`${username}: Error: invalid hash. Supported hashes are md5, sha1 and sha256.`)
       return
     }
     fs.readFile('./data/data.json', (err, dataText) => {
@@ -98,7 +98,7 @@ const onMessage = (bot, username, message) => {
           }
         })
       })
-      bot.chat(message)
+      mcBot.chat(message)
     })
   }
 }
