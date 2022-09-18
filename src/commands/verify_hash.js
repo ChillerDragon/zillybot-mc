@@ -56,11 +56,17 @@ const isValidHash = (hash) => {
 }
 
 class ComVerifyHash extends Command {
-  constructor(zillyBot) {
+  constructor (zillyBot) {
     super(zillyBot)
     this.names = ['checkhash', 'hashcheck', 'iphash', 'honeyhash', 'verifyip', 'verifyhash', 'honeypot']
+    this.helpPages = [
+      'there are unoffical proxies that are potentially malicious',
+      'hash the ip you connected to and check if it is the offical one',
+      'example unix command: echo 127.0.0.1 | sha1sum'
+    ]
   }
-  run(username, whisper, args) {
+
+  run (username, whisper, args) {
     if (args.length !== 1) {
       this.chat('usage: !checkhash <sha1 hashed server ip>')
       return

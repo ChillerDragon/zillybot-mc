@@ -9,6 +9,8 @@ const { initMcHooks } = require('./src/hooks')
 
 const { ComSeed } = require('./src/commands/seed')
 const { ComVerifyHash } = require('./src/commands/verify_hash')
+const { ComTps } = require('./src/commands/tps')
+const { ComBot } = require('./src/commands/bot')
 
 require('dotenv').config()
 
@@ -21,6 +23,8 @@ class ZillyBot {
     this.commands = []
     this.commands.push(new ComSeed(this))
     this.commands.push(new ComVerifyHash(this))
+    this.commands.push(new ComTps(this))
+    this.commands.push(new ComBot(this))
   }
 
   getInput () {

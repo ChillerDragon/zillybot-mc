@@ -1,18 +1,35 @@
 class Command {
-  constructor(zillyBot) {
+  constructor (zillyBot) {
     this.names = []
+    this.helpPages = ['TODO']
     this.zillyBot = zillyBot
   }
 
-  mc() {
+  help (page) {
+    if (page < 0) page = 0
+    if (page > this.helpPages.length) page = this.helpPages.length
+    if (this.helpPages.length === 0) return
+
+    let helpText = this.helpPages[page]
+    if (this.helpPages.length > 1) {
+      helpText += ` [page ${page}/${this.helpPages.length}]`
+    }
+    this.chat(helpText)
+  }
+
+  mc () {
     return this.zillyBot.mc
   }
 
-  chat(message) {
+  whisper (username, message) {
+    this.chat(`/tell ${username} ${message}`)
+  }
+
+  chat (message) {
     this.mc().chat(message)
   }
 
-  run(username, whisper, args) {
+  run (username, whisper, args) {
   }
 }
 
