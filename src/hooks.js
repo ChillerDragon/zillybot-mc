@@ -15,7 +15,7 @@ const initMcHooks = (zillyBot) => {
 
   zillyBot.mc.on('whisper', (username, message) => {
     logger.log('whisper', `${username}: ${message}`)
-    zillyBot.mc.chat('I am a zillyBot.mc. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
+    zillyBot.mc.chat(`/tell ${username} I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>`)
   })
 
   // zillyBot.mc.on('message', (message) => {
