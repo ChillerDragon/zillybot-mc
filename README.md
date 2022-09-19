@@ -13,6 +13,7 @@ So unless you are playing on the LO server check out the libraries I use directl
 ## related projects
 
 - [GreenScripter/sign-restorer](https://github.com/GreenScripter/sign-restorer) project that keeps track of signs on the LiveOverflow server
+- [ZillyHuhn/liveoverflow-world](https://github.com/ZillyHuhn/liveoverflow-world) world download of the server
 
 ## getting started
 
