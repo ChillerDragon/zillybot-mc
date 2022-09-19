@@ -11,6 +11,7 @@ const { ComSeed } = require('./src/commands/seed')
 const { ComVerifyHash } = require('./src/commands/verify_hash')
 const { ComTps } = require('./src/commands/tps')
 const { ComBot } = require('./src/commands/bot')
+const { ComCmdlist } = require('./src/commands/cmdlist')
 
 require('dotenv').config()
 
@@ -25,6 +26,7 @@ class ZillyBot {
     this.commands.push(new ComVerifyHash(this))
     this.commands.push(new ComTps(this))
     this.commands.push(new ComBot(this))
+    this.commands.push(new ComCmdlist(this))
   }
 
   getInput () {

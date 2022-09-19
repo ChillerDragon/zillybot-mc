@@ -8,6 +8,7 @@ const onMessage = (zillyBot, username, message) => {
   const cmd = input[0]
   const args = input.length > 1 ? input.slice(1) : []
   logger.log('command', `'${username}' used command '${cmd}' with args: ${args}`)
+  // TODO: move this to commands/help.js
   if (fullCommand.startsWith('help ')) {
     const helpData = fullCommand.split(' ').slice(1)
     if (helpData.length < 1) return
@@ -21,7 +22,7 @@ const onMessage = (zillyBot, username, message) => {
       }
     })
   } else if (cmd.startsWith('help') || cmd.startsWith('info') || cmd.startsWith('about')) {
-    zillyBot.mc.chat('I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>')
+    zillyBot.mc.chat('Checkout !cmdlist and the code at <https://github.com/ChillerDragon/zillybot-mc>')
   } else {
     zillyBot.commands.forEach((com) => {
       if (com.names.includes(cmd)) {
