@@ -22,7 +22,7 @@ const onMessage = (zillyBot, username, message) => {
       }
     })
   } else if (cmd.startsWith('help') || cmd.startsWith('info') || cmd.startsWith('about')) {
-    zillyBot.mc.chat('Checkout !cmdlist and the code at <https://github.com/ChillerDragon/zillybot-mc>')
+    zillyBot.mcChatDropSpam('Checkout !cmdlist and the code at <https://github.com/ChillerDragon/zillybot-mc>')
   } else {
     zillyBot.commands.forEach((com) => {
       if (com.names.includes(cmd)) {

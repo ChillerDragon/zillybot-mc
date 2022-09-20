@@ -8,14 +8,14 @@ const initMcHooks = (zillyBot) => {
     logger.log('chat', `<${username}> ${message}`)
     ircBridge.onMessage(zillyBot, username, message)
     if (username === zillyBot.mc.username) return
-    if (message === 'chat test') zillyBot.mc.chat('uwu test')
+    if (message === 'chat test') zillyBot.mcChatDropSpam('uwu test')
 
     chatCommands.onMessage(zillyBot, username, message)
   })
 
   zillyBot.mc.on('whisper', (username, message) => {
     logger.log('whisper', `${username}: ${message}`)
-    zillyBot.mc.chat(`/tell ${username} I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>`)
+    zillyBot.mcChatDropSpam(`/tell ${username} I am a bot. My code is here: <https://github.com/ChillerDragon/zillybot-mc>`)
   })
 
   // zillyBot.mc.on('message', (message) => {

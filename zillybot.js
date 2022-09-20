@@ -21,12 +21,24 @@ class ZillyBot {
   constructor () {
     this.mc = null
     this.irc = null
+    this.lastMcChatSent = new Date()
     this.commands = []
     this.commands.push(new ComSeed(this))
     this.commands.push(new ComVerifyHash(this))
     this.commands.push(new ComTps(this))
     this.commands.push(new ComBot(this))
     this.commands.push(new ComCmdlist(this))
+  }
+
+  mcChatDropSpam (message) {
+    if (this.mc === null) return
+
+    const now = new Date()
+    const diffMs = now - this.lastMcChatSent
+    if (diffMs < 400) return
+
+    this.lastMcChatSent = new Date()
+    this.mc.chat(message)
   }
 
   getInput () {

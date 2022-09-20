@@ -23,7 +23,7 @@ const initIrc = (zillyBot) => {
   })
   zillyBot.irc.addListener(`message#${process.env.IRC_CHANNEL}`, (from, message) => {
     // logger.log(`irc][${connectionName()}`, `${from}: ${message}`)
-    zillyBot.mc.chat(`[${connectionName()}]${from}: ${message}`)
+    zillyBot.mcChatDropSpam(`[${connectionName()}]${from}: ${message}`)
   })
 }
 

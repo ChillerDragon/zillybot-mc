@@ -26,7 +26,7 @@ class Command {
   }
 
   chat (message) {
-    this.mc().chat(message)
+    this.zillyBot.mcChatDropSpam(message)
   }
 
   run (username, whisper, args) {
