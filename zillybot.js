@@ -79,6 +79,12 @@ const connect = (zillyBot) => {
   // zillyBot.mc.once('disconnect', () => reconnect(zillyBot))
   zillyBot.mc.on('kicked', (reason) => reconnect(reason, zillyBot))
   zillyBot.mc.on('error', (reason) => reconnect(reason, zillyBot))
+
+  // zillyBot.mc._client.on('position', (packet) => {
+  //   console.log("position packet")
+  //   packet.x = Math.round(packet.x * 100) / 100
+  //   packet.z = Math.round(packet.z * 100) / 100
+  // })
 }
 
 const zillyBot = new ZillyBot()
