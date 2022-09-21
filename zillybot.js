@@ -72,6 +72,19 @@ const connect = (zillyBot) => {
     auth: 'microsoft'
   })
 
+  // const _super = zillyBot.mc._client.write
+  // _super(packName, params)
+
+  // zillyBot.mc._client.write = (packName, params) => {
+  //   const _this = zillyBot.mc._client
+  //   // console.log(_this)
+  //   // if (!_this.serializer.writable) { return }
+  //   // if (packName === 'position_look' || packName === 'position') { return }
+  //   _this.serializer.write({ packName, params })
+  // }
+
+  // console.log(zillyBot.mc._client.write)
+
   logger.log('bot', `connecting to minecraft server ${process.env.SERVER_IP} ...`)
   ircBridge.initIrc(zillyBot)
 
@@ -80,11 +93,15 @@ const connect = (zillyBot) => {
   zillyBot.mc.on('kicked', (reason) => reconnect(reason, zillyBot))
   zillyBot.mc.on('error', (reason) => reconnect(reason, zillyBot))
 
-  // zillyBot.mc._client.on('position', (packet) => {
-  //   console.log("position packet")
-  //   packet.x = Math.round(packet.x * 100) / 100
-  //   packet.z = Math.round(packet.z * 100) / 100
-  // })
+  zillyBot.mc._client.on('position', (packet) => {
+    // packet.z = Math.round(packet.z * 1000) / 1000
+    // packet.x = Math.floor(packet.x) + 0.5
+    // packet.z = Math.floor(packet.z) + 0.5
+    packet.x = Math.floor(packet.x) + 1.7
+    packet.z = Math.floor(packet.z) + 1.7
+    packet.onGround = true
+    zillyBot.mc._client.write('position', packet)
+  })
 }
 
 const zillyBot = new ZillyBot()
