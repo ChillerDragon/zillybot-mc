@@ -68,7 +68,7 @@ const connect = (zillyBot) => {
     username: process.env.MC_USERNAME,
     password: process.env.MC_PASSWORD,
     port: process.env.SERVER_PORT,
-    version: '1.18.2',
+    version: '1.21.4',
     auth: 'microsoft'
   })
 
