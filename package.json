@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "zillybot.js",
+  "bin": {
+    "zillybot": "zillybot.js"
+  },
   "scripts": {
     "test": "npx standard"
   },
