@@ -69,7 +69,7 @@ const connect = (zillyBot) => {
     password: process.env.MC_PASSWORD,
     port: process.env.SERVER_PORT,
     version: '1.21.4',
-    auth: 'microsoft'
+    auth: process.env.MC_AUTH
   })
 
   // const _super = zillyBot.mc._client.write
@@ -92,6 +92,13 @@ const connect = (zillyBot) => {
   // zillyBot.mc.once('disconnect', () => reconnect(zillyBot))
   zillyBot.mc.on('kicked', (reason) => reconnect(reason, zillyBot))
   zillyBot.mc.on('error', (reason) => reconnect(reason, zillyBot))
+
+  if (process.env.MC_AUTH === 'offline') {
+    zillyBot.mc.on('login', () => {
+      process.env.MC_PASSWORD && zillyBot.mc.chat(`/login ${process.env.MC_PASSWORD}`)
+      process.env.OFFLINE_SKIN && zillyBot.mc.chat(`/skin ${process.env.OFFLINE_SKIN}`)
+    })
+  }
 
   zillyBot.mc._client.on('position', (packet) => {
     // packet.z = Math.round(packet.z * 1000) / 1000
