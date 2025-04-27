@@ -1,5 +1,5 @@
 const logger = require('./logger')
-const irc = require('irc')
+const irc = require('matrix-org-irc')
 
 const serverName = () => {
   return process.env.IRC_SERVER.split('.')[1]
